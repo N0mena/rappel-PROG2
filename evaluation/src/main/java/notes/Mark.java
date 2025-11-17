@@ -1,8 +1,7 @@
 package notes;
 
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 import lombok.*;
@@ -14,13 +13,36 @@ import lombok.*;
 @Builder
 
 public class Mark {
-    private List<Exam> exam;
+    private Exam exam;
     private float score;
-    private LocalDateTime datetime;
+    private Instant datetime;
     private String comment_change;
-    private Student student;
 
     public double getExamGrade(Exam exam, Student student, Instant t) {
-        return
+
+        List<Mark> markRecord = exam.getMarks().get(student);
+        if(markRecord == null||markRecord.isEmpty())return 0;
+
+        return markRecord.stream()
+                .filter(r -> !r.getDatetime().isAfter(t))
+                .max(Comparator.comparing(Mark::getDatetime))
+                .map(Mark::getScore)
+                .orElse((float)0);
     }
+
+    public double getCourseGrade(Course course, Student student, Instant t) {
+        double totalWeight = 0;
+        double total = 0;
+        for (Exam exam : course.getExams()){
+            double coef = exam.getCoefficient();
+            double examGrade = getExamGrade(exam, student, t);
+
+            total += examGrade * coef;
+            totalWeight += coef;
+        }
+
+        return total/totalWeight;
+    }
+
+
 }

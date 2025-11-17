@@ -1,6 +1,10 @@
 package notes;
 
 import lombok.*;
+
+import java.util.List;
+
+
 @Getter
 @Setter
 @ToString
@@ -8,5 +12,5 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Promotion {
-    private Group group;
+    private List<Group> group;
 }

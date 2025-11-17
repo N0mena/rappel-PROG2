@@ -1,5 +1,10 @@
 package notes;
 import lombok.*;
+
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+
 @Getter
 @Setter
 @ToString
@@ -12,4 +17,9 @@ public class Course {
     private String label;
     private int credit;
     private Teacher teacher;
+    private Map<Exam, Double> coefficients;
+    private List<Exam> exams;
+
+
+
 }
