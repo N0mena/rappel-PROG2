@@ -12,5 +12,6 @@ import lombok.*;
 public class Student extends User{
     private Group group;
     private Tutor tutor;
+    private Course course;
 
 }

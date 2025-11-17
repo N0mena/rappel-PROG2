@@ -1,7 +1,10 @@
 package notes;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+
 import lombok.*;
 @Getter
 @Setter
@@ -11,10 +14,13 @@ import lombok.*;
 @Builder
 
 public class Mark {
-    private String exam;
+    private List<Exam> exam;
     private float score;
     private LocalDateTime datetime;
     private String comment_change;
+    private Student student;
 
-
+    public double getExamGrade(Exam exam, Student student, Instant t) {
+        return
+    }
 }
