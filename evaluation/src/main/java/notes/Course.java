@@ -7,10 +7,7 @@ import java.util.Map;
 
 @Getter
 @Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
 
 public class Course {
     private String id;

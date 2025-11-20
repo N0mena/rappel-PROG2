@@ -36,11 +36,9 @@ public class Mark {
         for (Exam exam : course.getExams()){
             double coef = exam.getCoefficient();
             double examGrade = getExamGrade(exam, student, t);
-
             total += examGrade * coef;
             totalWeight += coef;
         }
-
         return total/totalWeight;
     }
 

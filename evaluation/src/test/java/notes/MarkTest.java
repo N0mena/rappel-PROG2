@@ -17,7 +17,7 @@ public class MarkTest {
 
 @BeforeEach
 public void setUp(){
-    Rondro = new Student(1,'');
+    Rondro = new Student("1" ,"Rakoto","Rondro", "2004-12-31", "rondro@gmail.com","0345678762", "K2", );
 }
 
 
